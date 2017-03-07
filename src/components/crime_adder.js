@@ -4,7 +4,7 @@ import CrimeTypeSelector from './crime_type_selector';
 import Description from  './description';
 import {SingleDatePicker} from 'react-dates';
 import axios from 'axios';
-const ROOT_URL =  "https://nocrimeback.herokuapp.com/api";//"http://localhost:1337/api"; 
+const ROOT_URL =  "https://nocrimeback.herokuapp.com/api";//"http://localhost:1337/api";
 
 class CrimeAdder extends Component {
   constructor(props) {
@@ -52,8 +52,8 @@ class CrimeAdder extends Component {
     if(this.state.reportedSelection.length === 1 && this.state.date && this.state.type && this.state.description){
       console.log("saving crime!");
       var reportedByUser = this.state.reportedSelection[0] === "si";
-      var latitudeFromMap = 4.601735;
-      var longitudeFromMap = -74.0700585;
+      var latitudeFromMap = 4.5951213;
+      var longitudeFromMap = -74.0710443;
 
       axios.post( ROOT_URL + '/crimes', {
       latitude: latitudeFromMap,
