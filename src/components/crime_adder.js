@@ -109,6 +109,7 @@ class CrimeAdder extends Component {
               onDateChange={this.onStartDateChange}
               onFocusChange={({ focused }) => { this.setState({ dateFocus: focused }); }}
               numberOfMonths={1}
+              anchorDirection='left'
           />
           </div>
         </div>
@@ -120,13 +121,15 @@ class CrimeAdder extends Component {
           </div>
           <div className="panelField-content">
             <p>Qué tipo de crimen fue?</p>
-            <div className="textArea">
+            <div className="textArea2">
+              <div id="typeSelectorElement">
         <CrimeTypeSelector
 					name={'crime-type'}
 					placeholder={'Tipo de crimen'}
 					controlFunc={this.handleCrimeTypeSelect}
 					options={this.state.types}
 					selectedOption={this.state.type} />
+              </div>
             </div>
           </div>
         </div>
@@ -138,14 +141,14 @@ class CrimeAdder extends Component {
           </div>
           <div className="panelField-content">
           <Description
-  					title={'Cuenta un poco del crimen que presenciaste'}
+
   					rows={5}
             cols={50}
   					resize={false}
   					content={this.state.description}
   					name={'crime-description'}
   					controlFunc={this.handleDescriptionChange}
-  					placeholder={'Cuentanos lo que sucedio.'} />
+  					placeholder={'Cuenta un poco del crimen que presenciaste'} />
           </div>
         </div>
         <div className="panelField aceptarCancelar">

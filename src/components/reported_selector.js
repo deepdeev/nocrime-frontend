@@ -1,13 +1,13 @@
 import React from 'react';
 
 const ReportedSelector = (props) => (
-	<div>
+	<span >
 		<label>{props.title}</label>
-		<div>
+		<span >
 			{props.options.map(option => {
 				return (
 					<label key={option}>
-						<input
+						<input className="space"
 							name={props.setName}
 							onChange={props.controlFunc}
 							value={option}
@@ -16,8 +16,8 @@ const ReportedSelector = (props) => (
 					</label>
 				);
 			})}
-		</div>
-	</div>
+		</span>
+	</span>
 );
 
 ReportedSelector.propTypes = {

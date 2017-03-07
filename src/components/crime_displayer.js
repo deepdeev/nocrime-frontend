@@ -4,7 +4,6 @@ import CrimeSelector from './crime_selector';
 //import CitySelector from (./city_selector);
 
 import {SingleDatePicker} from 'react-dates';
-import {DateRangePicker} from 'react-dates';
 
 
 class CrimeDisplayer extends Component {
@@ -18,7 +17,7 @@ class CrimeDisplayer extends Component {
       startDateFocus: null,
       endDateFocus: null,
       crimeSelections: ["robo", "violacion", "violencia", "drogas", "prostitucion"],
-      selectedCrimes: [],
+      selectedCrimes: ["robo", "violacion", "violencia", "drogas", "prostitucion"],
       city: null
     }
 
@@ -102,7 +101,7 @@ class CrimeDisplayer extends Component {
             <div className="panelField-content">
               <p>Selecciona las fechas en que quieres hacer tu busqueda.</p>
               <div className="row">
-                <div className="col-md-2"></div>
+                <div className="col-md-1"></div>
                 <div className="col-md-3">
               <SingleDatePicker
                   id="startDate-input"
@@ -114,6 +113,7 @@ class CrimeDisplayer extends Component {
                     this.setState({startDateFocus: focused});
                   }}
                   numberOfMonths={1}
+                  anchorDirection='left'
               />
                 </div>
                 <div className="col-md-1"></div>
@@ -128,6 +128,7 @@ class CrimeDisplayer extends Component {
                     this.setState({endDateFocus: focused});
                   }}
                   numberOfMonths={1}
+                  anchorDirection='right'
               />
                 </div>
                 <div className="col-md-2"></div>

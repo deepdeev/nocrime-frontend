@@ -76,6 +76,10 @@ h3
 {
     color: #A2A9AF;
 }
+#typeSelectorElement
+{
+    height: 80px;
+}
 label
 {
     font-weight: normal;
@@ -107,11 +111,25 @@ label
 {
     display:none;
 }
+.space
+{
+    margin-left: 15px!important;
+    padding-right: 10px!important;
+}
+input
+{
+    /*margin-left: -15px!important;*/
+    /*margin-right: -5px;*/
+}
 .textArea,.form-input
 {
     max-width: 100%!important;
     width: 95%;
     height: 70px;
+}
+.textArea2
+{
+    height: 30px;
 }
 .SingleDataPicker,.SingleDataPickerInput,.DateInput,.DateInput__input,.DateInput__display-text
 {
