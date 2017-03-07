@@ -3,6 +3,8 @@ import ReportedSelector from './reported_selector';
 import CrimeTypeSelector from './crime_type_selector';
 import Description from  './description';
 import {SingleDatePicker} from 'react-dates';
+import axios from 'axios';
+const ROOT_URL =  "https://nocrimeback.herokuapp.com/api";//"http://localhost:1337/api"; 
 
 class CrimeAdder extends Component {
   constructor(props) {
@@ -43,7 +45,36 @@ class CrimeAdder extends Component {
   }
   handleDescriptionChange(e) {
   this.setState({ description: e.target.value }, () => console.log('description', this.state.description));
-}
+  }
+
+  saveCrime(e){
+    // check that three necessary things are not null and save the new crime into the database
+    if(this.state.reportedSelection.length === 1 && this.state.date && this.state.type && this.state.description){
+      console.log("saving crime!");
+      var reportedByUser = this.state.reportedSelection[0] === "si";
+      var latitudeFromMap = 4.601735;
+      var longitudeFromMap = -74.0700585;
+
+      axios.post( ROOT_URL + '/crimes', {
+      latitude: latitudeFromMap,
+      longitude: longitudeFromMap,
+      type: this.state.type,
+      date: this.state.date,
+      reported: reportedByUser,
+      description: this.state.description
+      })
+      .then(response => {
+        console.log("saving in data base base");
+        console.log(response.data);
+        this.props.updateMapWithNewCrime();
+      })
+      .catch(function (error) {
+        console.log("Error calling search API, error below:")
+        console.log(error);
+      });
+
+    }
+  }
 
   render(){
     return(
@@ -121,7 +152,7 @@ class CrimeAdder extends Component {
           <div className="row">
             <div className="col-md-2"></div>
             <div className="col-md-3">
-              <a className="btn-landingPage btn btn-lg btn-default irAPanelFiltros">Aceptar</a>
+              <a className="btn-landingPage btn btn-lg btn-default irAPanelFiltros" onClick={this.saveCrime.bind(this)}>Aceptar</a>
             </div>
             <div className="col-md-1"></div>
             <div className="col-md-5">
